@@ -8,12 +8,12 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                 C:\apache-maven-3.5.3\bin 'mvn clean package'
+                sh 'mvn clean package'
             }
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
